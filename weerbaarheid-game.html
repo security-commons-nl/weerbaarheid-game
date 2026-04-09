@@ -996,7 +996,7 @@ body.presentatie .score-row-value { font-size: 15px; }
   <div class="totaal-wrap">
     <div class="totaal-grid" id="totaal-grid"></div>
     <div class="totaal-msg" id="totaal-msg">
-      Dit is Leiden vandaag. Geen noodplan. Geen herstel.
+      Dit is uw gemeente vandaag. Geen noodplan. Geen herstel.
     </div>
     <div class="totaal-footer">
       <button class="btn btn-incident" onclick="triggerStadsIncident()">&#9889; Incident in de stad</button>
@@ -1053,7 +1053,7 @@ body.presentatie .score-row-value { font-size: 15px; }
     <div class="prep-footer">
       <span class="prep-teller" id="prep-teller"><strong>0</strong> van <span id="prep-max-teller">3</span> gekozen</span>
       <div class="prep-buttons">
-        <button class="btn btn-reset" onclick="startHuidigeSituatie()">Sla over — huidige situatie Leiden</button>
+        <button class="btn btn-reset" onclick="startHuidigeSituatie()">Sla over — huidige situatie</button>
         <button class="btn btn-incident" id="btn-prep-start" onclick="startVanuitPrep()" disabled>&#9654; Start scenario</button>
       </div>
     </div>
@@ -1209,7 +1209,7 @@ const DIENSTEN = {
     fail: { icon:'❌', title:'Zorg uitgevallen',         desc:'Geen enkel zorgdossier is bereikbaar. Thuiszorgmedewerkers weten niet bij wie ze moeten zijn of wat ze moeten doen. Na een dag beginnen kwetsbare inwoners de gevolgen te voelen.' }
   },
   drinkwater: {
-    naam:'Drinkwater leveren', sub:'125.000 inwoners zonder water bij uitval', icoon:'🚰', pijler:'vitaal',
+    naam:'Drinkwater leveren', sub:'Inwoners zonder water bij uitval', icoon:'🚰', pijler:'vitaal',
     incident:'Regionale stroomstoring (Liander)',
     keten: [
       { id:'k0', naam:'Druk-\nsensor',          sf:0.12, teeth:12, type:'g-process', isSpof:false, uitleg:'Sensoren meten continu de waterdruk in het leidingnetwerk.' },
@@ -1227,7 +1227,7 @@ const DIENSTEN = {
     ],
     ok:   { icon:'🚰', title:'Schoon drinkwater',       desc:'Kraan stroomt. Inwoners en bedrijven ongestoord.' },
     warn: { icon:'💧', title:'Noodvoeding actief',       desc:'De noodstroom houdt de pompen nog maximaal 4 uur draaiende. Als Liander het stroomnet niet herstelt, staat de kraan daarna droog. De klok tikt.' },
-    fail: { icon:'🚱', title:'Geen water',               desc:'De kraan staat droog. Toiletten spoelen niet meer, ziekenhuizen en verpleeghuizen raken in de problemen, en de brandweer kan geen brand blussen. 125.000 inwoners zijn aangewezen op noodwater.' }
+    fail: { icon:'🚱', title:'Geen water',               desc:'De kraan staat droog. Toiletten spoelen niet meer, ziekenhuizen en verpleeghuizen raken in de problemen, en de brandweer kan geen brand blussen. Inwoners zijn aangewezen op noodwater.' }
   },
   uitkering: {
     naam:'Uitkering storten', sub:'Huishoudens kunnen huur niet betalen bij uitval', icoon:'💶', pijler:'vitaal',
@@ -1253,7 +1253,7 @@ const DIENSTEN = {
     naam:'Afval verwerken', sub:'Vuilnis stapelt op bij uitval wagendepot', icoon:'🗑️', pijler:'vitaal',
     incident:'Brand in wagendepot / uitval vuilniswagens',
     keten: [
-      { id:'k0', naam:'Route-\nplanning',      sf:0.12, teeth:12, type:'g-process', isSpof:false, uitleg:'Routes worden gepland voor alle wijken in Leiden.' },
+      { id:'k0', naam:'Route-\nplanning',      sf:0.12, teeth:12, type:'g-process', isSpof:false, uitleg:'Routes worden gepland voor alle wijken.' },
       { id:'k1', naam:'Wagen-\ndepot',         sf:0.09, teeth:10, type:'g-spof',    isSpof:true,  uitleg:'De vuilniswagens staan klaar in het depot. Het tag-systeem ontgrendelt de motoren.' },
       { id:'k2', naam:'Vuilnis-\nwagen',       sf:0.10, teeth:11, type:'g-process', isSpof:false, uitleg:'De wagen rijdt de geplande route en haalt het afval op.' },
       { id:'k3', naam:'Ophaal-\nronde',        sf:0.10, teeth:11, type:'g-conn',    isSpof:false, uitleg:'Bij elke container registreert de chipscanner de ophaling.' },
@@ -1642,7 +1642,7 @@ const SCENARIOS = {
       ],
       ok:   { icon:'🚰', title:'Drinkwater geleverd', desc:'Kraan stroomt. Druk normaal.' },
       warn: { icon:'💧', title:'Noodstroom actief', desc:'UPS houdt pompgemalen draaiende. Maximaal 4 uur beschikbaar. Dunea levert noodwater op distributiepunten.' },
-      fail: { icon:'🚱', title:'Kranen droog', desc:'Pompgemalen stilgevallen. 125.000 inwoners zonder water. Brandweer kan niet blussen, ziekenhuizen in problemen.' }
+      fail: { icon:'🚱', title:'Kranen droog', desc:'Pompgemalen stilgevallen. Inwoners zonder water. Brandweer kan niet blussen, ziekenhuizen in problemen.' }
     },
     {
       id:'water-vervuiling', label:'Watervervuiling',
@@ -2046,7 +2046,7 @@ function bouwPrepGrid(key, scenarioIdx) {
         <div class="prep-kaart-tip">${o.tooltip||''}</div>
       </div>`).join('');
     document.getElementById('prep-aldefect-container').innerHTML =
-      '<div class="prep-aldefect-msg">&#128308; Geen van deze maatregelen is genomen. Dit is de huidige situatie in Leiden.</div>';
+      '<div class="prep-aldefect-msg">&#128308; Geen van deze maatregelen is genomen. Dit is de huidige situatie.</div>';
     startBtn.style.display = 'none';
     document.getElementById('prep-teller').innerHTML = '&nbsp;';
     return;
@@ -2310,14 +2310,14 @@ const ESCALATIES_DIENST = {
     { min:15,  tekst:'Media meldt: "overheid onbereikbaar bij incident"', stressBoost:20 },
     { min:30,  tekst:'Wethouder geïnformeerd — vraagt verklaring', stressBoost:10 },
     { min:60,  tekst:'Raadsvragen ingediend over communicatiefalen', stressBoost:15 },
-    { min:120, tekst:'Landelijke media: "Leiden kon inwoners niet waarschuwen"', stressBoost:25 }
+    { min:120, tekst:'Landelijke media: "gemeente kon inwoners niet waarschuwen"', stressBoost:25 }
   ],
   noodsteun: [
     { min:30,  tekst:'Eerste kwetsbare inwoners melden zich bij politiebureau', stressBoost:10 },
     { min:60,  tekst:'Media belt over mensen die buiten in de kou staan', stressBoost:15 },
     { min:120, tekst:'Wethouder Zorg geïnformeerd', stressBoost:10 },
     { min:240, tekst:'Raad vraagt spoeddebat over opvangfalen', stressBoost:15 },
-    { min:480, tekst:'Landelijke aandacht voor kwetsbare groepen in Leiden', stressBoost:20 }
+    { min:480, tekst:'Landelijke aandacht voor kwetsbare groepen', stressBoost:20 }
   ],
   zorg: [
     { min:60,   tekst:'Eerste cliënten bellen gemeente — geen zorgmedewerker gezien', stressBoost:10 },
@@ -2331,11 +2331,11 @@ const ESCALATIES_DIENST = {
     { min:120, tekst:'Media meldt watercrisis — inwoners hamsteren flessenwater', stressBoost:20 },
     { min:240, tekst:'Wethouder informeert raad — spoeddebat aangevraagd', stressBoost:10 },
     { min:480, tekst:'Huisartsen melden toename watergebonden klachten', stressBoost:20 },
-    { min:1440,tekst:'Landelijke media: "Watercrisis Leiden — 125.000 zonder water"', stressBoost:25 }
+    { min:1440,tekst:'Landelijke media: "Watercrisis — inwoners zonder water"', stressBoost:25 }
   ],
   uitkering: [
     { min:480,  tekst:'Eerste cliënten bellen: uitkering niet ontvangen', stressBoost:10 },
-    { min:1440, tekst:'Media: "Leiden betaalt bijstand niet uit"', stressBoost:20 },
+    { min:1440, tekst:'Media: "gemeente betaalt bijstand niet uit"', stressBoost:20 },
     { min:2880, tekst:'Wethouder Sociaal vraagt spoedoverleg college', stressBoost:10 },
     { min:5760, tekst:'Raad: noodmotie voor noodfonds kwetsbare gezinnen', stressBoost:20 },
     { min:10080,tekst:'Landelijk nieuws: "Leidse bijstandsgerechtigden in problemen"', stressBoost:25 }
@@ -2349,7 +2349,7 @@ const ESCALATIES_DIENST = {
   ],
   paspoort: [
     { min:30,  tekst:'Wachtrij voor stadhuis — burgerzaken overspoeld', stressBoost:8 },
-    { min:120, tekst:'Media: "Leidenaren kunnen niet reizen door systeemstoring"', stressBoost:15 },
+    { min:120, tekst:'Media: "Inwoners kunnen niet reizen door systeemstoring"', stressBoost:15 },
     { min:480, tekst:'Wethouder informeert raad over uitgifte-stop', stressBoost:8 },
     { min:1440,tekst:'Raadsvragen over alternatieven voor reisdocumenten', stressBoost:12 },
     { min:4320,tekst:'Landelijk nieuws: aandacht voor uitgifte-problemen', stressBoost:15 }
@@ -2358,15 +2358,15 @@ const ESCALATIES_DIENST = {
     { min:5,  tekst:'Hulpdiensten vragen om centrale coördinatie — geen antwoord', stressBoost:20 },
     { min:15, tekst:'GRIP-niveau verhoogd — gemeente niet in beeld', stressBoost:25 },
     { min:30, tekst:'Veiligheidsregio neemt coördinatie over van gemeente', stressBoost:15 },
-    { min:60, tekst:'Media: "Gemeente Leiden afwezig bij eigen crisis"', stressBoost:20 },
+    { min:60, tekst:'Media: "Gemeente afwezig bij eigen crisis"', stressBoost:20 },
     { min:120,tekst:'Minister van BZK vraagt opheldering aan burgemeester', stressBoost:30 }
   ],
   informatie: [
     { min:60,  tekst:'Medewerkers kunnen niet inloggen — eerste paniek op werkvloer', stressBoost:10 },
-    { min:240, tekst:'Media meldt cyberaanval op gemeente Leiden', stressBoost:20 },
+    { min:240, tekst:'Media meldt cyberaanval op gemeente', stressBoost:20 },
     { min:720, tekst:'College in crisisoverleg — alle digitale diensten plat', stressBoost:15 },
     { min:1440,tekst:'NCSC geïnformeerd — Rijksoverheid biedt hulp', stressBoost:15 },
-    { min:4320,tekst:'Landelijk nieuws: "Ransomware legt Leiden plat voor drie dagen"', stressBoost:25 }
+    { min:4320,tekst:'Landelijk nieuws: "Ransomware legt gemeente plat voor drie dagen"', stressBoost:25 }
   ]
 };
 
@@ -3468,7 +3468,7 @@ function triggerStadsIncident() {
             if (imp) { totKosten += imp.kostenPerUur * 24; if (!uniek.has(imp.inwoners)) { totInwoners += imp.inwoners; uniek.add(imp.inwoners); } }
           });
           const msg = document.getElementById('totaal-msg');
-          msg.innerHTML = `${totInwoners.toLocaleString('nl-NL')} inwoners geraakt. Geschatte kosten eerste 24 uur: \u20AC${totKosten.toLocaleString('nl-NL')}.<br><br><strong>Dit is Leiden vandaag. Geen noodplan. Geen herstel.</strong>`;
+          msg.innerHTML = `${totInwoners.toLocaleString('nl-NL')} inwoners geraakt. Geschatte kosten eerste 24 uur: \u20AC${totKosten.toLocaleString('nl-NL')}.<br><br><strong>Dit is uw gemeente vandaag. Geen noodplan. Geen herstel.</strong>`;
           msg.classList.add('visible');
           st.stadsCascading = false;
           document.querySelectorAll('.totaal-footer .btn').forEach(b => b.disabled = false);
@@ -4047,7 +4047,7 @@ const TUTORIAL_STAPPEN = [
   { target:'.node-spof', title:'Het zwakke punt', tekst:'Dit is de SPOF — het Single Point of Failure. Als deze schakel uitvalt, stopt alles wat erachter zit. Er is geen alternatief.', positie:'bottom' },
   { target:'#maatregel-tray', title:'Beschikbare maatregelen', tekst:'Dit zijn de maatregelen die je kunt inzetten. Sleep een kaart naar de noodzone — of klik de kaart aan en klik dan op de noodzone. Rode maatregelen zijn niet beschikbaar.', positie:'top' },
   { target:'.bypass-lane', title:'De noodzone', tekst:'Sleep hier maatregelen naartoe — of klik een kaart aan en klik dan hier. Zo creëer je een alternatieve route rond het zwakke punt.', positie:'top' },
-  { target:'.rp-result', title:'Impact op inwoners', tekst:'Hier zie je wat het incident betekent voor de inwoners van Leiden. Groen = alles werkt. Rood = dienst uitgevallen.', positie:'left' },
+  { target:'.rp-result', title:'Impact op inwoners', tekst:'Hier zie je wat het incident betekent voor de inwoners. Groen = alles werkt. Rood = dienst uitgevallen.', positie:'left' },
   { target:'.rp-logboek', title:'Meldingen & tijdsdruk', tekst:'Hier komen meldingen binnen naarmate de tijd verstrijkt. De druk op de organisatie loopt op. Elke seconde telt.', positie:'left' }
 ];
 
