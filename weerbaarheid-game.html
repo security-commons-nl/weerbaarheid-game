@@ -2270,15 +2270,15 @@ function kiesDienst(key) {
 // IMPACT DATA (voor eindscore)
 // ════════════════════════════════════════════════
 const IMPACT = {
-  crisis:    { inwoners:125000, kostenPerUur:25000,  omschrijving:'onbereikbaar bij acuut gevaar' },
+  crisis:    { inwoners:110000, kostenPerUur:25000,  omschrijving:'onbereikbaar bij acuut gevaar' },
   noodsteun: { inwoners:15000,  kostenPerUur:15000,  omschrijving:'zonder opvang of hulp' },
   zorg:      { inwoners:8000,   kostenPerUur:35000,  omschrijving:'zonder thuiszorg' },
-  drinkwater:{ inwoners:125000, kostenPerUur:75000,  omschrijving:'zonder drinkwater' },
+  drinkwater:{ inwoners:110000, kostenPerUur:75000,  omschrijving:'zonder drinkwater' },
   uitkering: { inwoners:12000,  kostenPerUur:40000,  omschrijving:'zonder uitkering' },
-  afval:     { inwoners:125000, kostenPerUur:8000,   omschrijving:'zonder afvalinzameling' },
+  afval:     { inwoners:110000, kostenPerUur:8000,   omschrijving:'zonder afvalinzameling' },
   paspoort:  { inwoners:500,    kostenPerUur:5000,   omschrijving:'zonder identiteitsdocumenten' },
-  crisisorg: { inwoners:125000, kostenPerUur:100000, omschrijving:'zonder crisiscoördinatie' },
-  informatie:{ inwoners:125000, kostenPerUur:120000, omschrijving:'zonder gemeentelijke dienstverlening' }
+  crisisorg: { inwoners:110000, kostenPerUur:100000, omschrijving:'zonder crisiscoördinatie' },
+  informatie:{ inwoners:110000, kostenPerUur:120000, omschrijving:'zonder gemeentelijke dienstverlening' }
 };
 
 // Identificeerbare slachtoffers per dienst
@@ -3467,8 +3467,10 @@ function triggerStadsIncident() {
             const imp = IMPACT[k];
             if (imp) { totKosten += imp.kostenPerUur * 24; if (!uniek.has(imp.inwoners)) { totInwoners += imp.inwoners; uniek.add(imp.inwoners); } }
           });
+          const impactLabel = n => n >= 80000 ? 'Vrijwel alle inwoners' : n >= 20000 ? 'Groot deel van de inwoners' : n >= 5000 ? 'Kwetsbare groepen' : 'Een groep inwoners';
+          const kostenLabel = k => k >= 2000000 ? 'EXTREEM' : k >= 500000 ? 'KRITIEK' : k >= 100000 ? 'HOOG' : 'MERKBAAR';
           const msg = document.getElementById('totaal-msg');
-          msg.innerHTML = `${totInwoners.toLocaleString('nl-NL')} inwoners geraakt. Geschatte kosten eerste 24 uur: \u20AC${totKosten.toLocaleString('nl-NL')}.<br><br><strong>Dit is uw gemeente vandaag. Geen noodplan. Geen herstel.</strong>`;
+          msg.innerHTML = `${impactLabel(totInwoners)} geraakt. Impact: <strong>${kostenLabel(totKosten)}</strong>.<br><br><strong>Dit is uw gemeente vandaag. Geen noodplan. Geen herstel.</strong>`;
           msg.classList.add('visible');
           st.stadsCascading = false;
           document.querySelectorAll('.totaal-footer .btn').forEach(b => b.disabled = false);
@@ -3715,11 +3717,11 @@ function toonEindscore() {
 
         <span class="score-icon">\uD83D\uDC65</span>
         <span class="score-row-label">Getroffen inwoners</span>
-        <span class="score-row-value">${imp.inwoners.toLocaleString('nl-NL')}</span>
+        <span class="score-row-value">${imp.inwoners >= 80000 ? 'Vrijwel iedereen' : imp.inwoners >= 20000 ? 'Groot deel' : imp.inwoners >= 5000 ? 'Kwetsbare groepen' : 'Kleine groep'}</span>
 
         <span class="score-icon">\uD83D\uDCB0</span>
-        <span class="score-row-label">Geschatte schade</span>
-        <span class="score-row-value" style="color:#C8102E;font-size:16px;">\u20AC ${kosten.toLocaleString('nl-NL')}</span>
+        <span class="score-row-label">Impact</span>
+        <span class="score-row-value" style="color:#C8102E;font-size:16px;">${kosten >= 1000000 ? 'EXTREEM' : kosten >= 200000 ? 'KRITIEK' : kosten >= 50000 ? 'HOOG' : 'MERKBAAR'}</span>
 
         <span class="score-icon">\uD83D\uDD27</span>
         <span class="score-row-label">Herstel</span>
