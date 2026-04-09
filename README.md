@@ -65,3 +65,8 @@ Zie [CONTRIBUTING.md](https://github.com/security-commons-nl/.github/blob/main/C
 
 - [Gebruik](docs/gebruik.md) — hoe je de tool gebruikt in een presentatie
 - [Architectuur](docs/architectuur.md) — hoe de tool technisch is opgebouwd
+---
+
+## Principes
+
+Dit project volgt de [architectuur- en communityprincipes](https://github.com/security-commons-nl/.github/blob/main/PRINCIPLES.md) van security-commons-nl: EU-soevereiniteit, AI altijd adviserend, auditbaarheid by design, least privilege en open source als standaard.
