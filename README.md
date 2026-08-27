@@ -2,6 +2,9 @@
 
 > Interactief beslissingsgereedschap dat de kwetsbaarheid van gemeentelijke dienstverlening zichtbaar maakt voor bestuurders.
 
+> **Live spelen:** [security-commons-nl.github.io/weerbaarheid-game](https://security-commons-nl.github.io/weerbaarheid-game/) — draait volledig in de browser, geen installatie.
+
+
 
 [![Bijdragen](https://img.shields.io/badge/📝_Bijdragen-238636?style=for-the-badge)](../../issues/new/choose)&nbsp;&nbsp;&nbsp;&nbsp;[![Meepraten](https://img.shields.io/badge/💬_Meepraten-0969da?style=for-the-badge)](../../discussions)
 
