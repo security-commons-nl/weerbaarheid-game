@@ -35,7 +35,7 @@ python -m http.server 8000
 
 - Pure HTML5 + vanilla JS + SVG — **geen build-tools, frameworks of bundlers**
 - Werkt offline, zonder login, bestuurbaar door niet-technische gebruikers
-- Alleen `weerbaarheid-game.html` is publiek; Leiden-specifieke data blijft lokaal
+- Alleen `weerbaarheid-game.html` is publiek; organisatiespecifieke data blijft lokaal
 
 ### PRs
 

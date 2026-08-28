@@ -12,7 +12,7 @@ Bestuurders (DT en College van B&W) moeten na het zien van dit dashboard één d
 De tool is geen informatiedashboard. Het is een beslissingsgereedschap. Het doel is dat uit de presentatie van 21 april 2026 een concrete uitkomst volgt: commitment voor budget en mandate voor het programma MWeV.
 
 **Het concrete argument dat de tool maakt:**
-Gemeente Leiden levert diensten aan inwoners. Die diensten hangen af van systemen. Die systemen hebben zwakke schakels. Als één schakel uitvalt, stoppen alle tandwielen. Er is op dit moment geen herstelplan. Disaster Recovery = DEFECT. Dit is de huidige toestand. Het programma Maatschappelijke Weerbaarheid herstelt dit — maar alleen als er beslissing en budget zijn.
+De gemeente levert diensten aan inwoners. Die diensten hangen af van systemen. Die systemen hebben zwakke schakels. Als één schakel uitvalt, stoppen alle tandwielen. Er is op dit moment geen herstelplan. Disaster Recovery = DEFECT. Dit is de huidige toestand. Het programma Maatschappelijke Weerbaarheid herstelt dit — maar alleen als er beslissing en budget zijn.
 
 **Wat de tool dus NIET is:**
 - Geen technische documentatie voor IT-afdeling
@@ -48,7 +48,7 @@ Gemeente Leiden levert diensten aan inwoners. Die diensten hangen af van systeme
 
 **Tempo:** Langzaam genoeg om te begrijpen, snel genoeg om het gevoel te houden.
 
-**Stijl:** Gemeente Leiden huisstijl (clean, professioneel) — geen gamification, geen alarmsirenes. Wel een duidelijk kleurcontrast tussen "werkt" en "staat stil".
+**Stijl:** gemeentelijke huisstijl (clean, professioneel) — geen gamification, geen alarmsirenes. Wel een duidelijk kleurcontrast tussen "werkt" en "staat stil".
 
 **Gevoel na gebruik:** "Dit is serieus. Hier moet een beslissing over komen."
 
