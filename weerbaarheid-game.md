@@ -9,7 +9,7 @@
 **Het politieke doel:**
 Bestuurders (DT en College van B&W) moeten na het zien van dit dashboard één ding voelen: als er nu een incident is, staat Leiden stil. En: dat is een keuze, geen noodlot.
 
-De tool is geen informatiedashboard. Het is een beslissingsgereedschap. Het doel is dat uit de presentatie van 21 april 2026 een concrete uitkomst volgt: commitment voor budget en mandate voor het programma MWeV.
+De tool is geen informatiedashboard. Het is een beslissingsgereedschap. Het doel is dat uit de presentatie een concrete uitkomst volgt: commitment voor budget en mandaat voor een weerbaarheidsprogramma.
 
 **Het concrete argument dat de tool maakt:**
 De gemeente levert diensten aan inwoners. Die diensten hangen af van systemen. Die systemen hebben zwakke schakels. Als één schakel uitvalt, stoppen alle tandwielen. Er is op dit moment geen herstelplan. Disaster Recovery = DEFECT. Dit is de huidige toestand. Het programma Maatschappelijke Weerbaarheid herstelt dit — maar alleen als er beslissing en budget zijn.
@@ -145,7 +145,7 @@ Dit datamodel vult de animatie. Alles is vervangbaar zonder de HTML te herschrij
 
 ## 7. De 9 diensten — ketenstappen, SPOF en maatregelen
 
-Status gebaseerd op: *Status BCM - DT.pdf*, *Rapportage Security IV feb 2026*, *Nulmeting weerbaarheid Q1 2026*, *Werkdocument MWeV*.
+De statussen in dit voorbeeld komen uit de eigen continuiteits- en securityrapportages van de organisatie die het spel inbracht. Vul ze voor je eigen situatie: een status die niet uit je eigen stukken komt, houdt geen stand in het gesprek.
 
 Elke dienst heeft 5 processtappen (k0–k4). SPOF staat altijd op k2. Maatregelen zijn reactief (bypass-keten) of preventief (satelliet op host-stap).
 
@@ -179,7 +179,7 @@ Elke dienst heeft 5 processtappen (k0–k4). SPOF staat altijd op k2. Maatregele
 **Bypass-logica:** bypass werkt alleen als ALLE reactieve schakels oranje + actief zijn. Eén defecte schakel breekt de bypass permanent. Zorg, Uitkering en Afval hebben GEEN werkende bypass — het sterkste politieke argument.
 
 **Bronverantwoording:**
-- BCM = DEFECT voor alle gemeentelijke processen: *Status BCM - DT.pdf* (IDA-cluster, geen werkende DR, nooit getest, continuïteitsplan terug naar concept)
+- BCM = DEFECT voor alle gemeentelijke processen: uit de eigen continuiteitsrapportage (geen werkende uitwijk, nooit getest, continuiteitsplan terug naar concept)
 - Crisisruimte verwijderd uit stadhuis, geen vervanging vastgesteld
 - UPS drinkwater: technisch aanwezig, niet getest onder crisisomstandigheden
 - VRHM-pilot noodsteunpunten: loopt (Leiden deelnemend)
@@ -187,20 +187,20 @@ Elke dienst heeft 5 processtappen (k0–k4). SPOF staat altijd op k2. Maatregele
 - GRIP-protocol: bestaat op papier, niet recent geoefend
 
 **Bronverantwoording:**
-- BCM = DEFECT voor alle gemeentelijke processen: *Status BCM - DT.pdf* (IDA-cluster, geen werkende DR, nooit getest, continuïteitsplan terug naar concept)
+- BCM = DEFECT voor alle gemeentelijke processen: uit de eigen continuiteitsrapportage (geen werkende uitwijk, nooit getest, continuiteitsplan terug naar concept)
 - Crisisruimte verwijderd uit stadhuis, geen vervanging vastgesteld
 - UPS drinkwater: technisch aanwezig, niet getest onder crisisomstandigheden
 - VRHM-pilot noodsteunpunten: loopt (Leiden deelnemend)
 - Tijdelijk reisdocument / Rijksfallback paspoort: wettelijke procedure bestaat
 - GRIP-protocol: bestaat op papier, niet recent geoefend
-- Backup-procedures M365: aanwezig, maar herstelplannen ontbreken (*Status BCM - DT.pdf*)
+- Backup-procedures M365: aanwezig, maar herstelplannen ontbreken (uit dezelfde rapportage)
 
 ---
 
 ## 8. Gebruik in presentatie
 
-**Standalone (Francine presenteert):**
-Volledig scherm in browser. Francine kiest een dienst, loopt door de animatie, klikt incident, toont het grijze DR-tandwiel. Geen tekst nodig — de tool spreekt.
+**Standalone (de CISO presenteert):**
+Volledig scherm in de browser. Kies een dienst, loop door de animatie, klik op incident en toon het grijze DR-tandwiel. Geen tekst nodig, de tool spreekt.
 
 **Zelfgestuurd (DT/College klikt zelf):**
 Op een tablet of laptop kunnen deelnemers zelf klikken. Verhoogt betrokkenheid en levert "aha-momenten" op.
