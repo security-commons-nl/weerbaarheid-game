@@ -24,10 +24,9 @@ Het weerbaarheids-dashboard is functioneel als standalone HTML-presentatiegereed
 - [ ] Presentatiemodus: volledig scherm, geen bedieningselementen zichtbaar
 - [ ] Configureerbaar: organisatienaam en logo aanpasbaar via invoerveld
 
-## Fase 3 — Koppeling met grc-platform
+## Fase 3 — Export naar je eigen managementsysteem
 
-- [ ] Optionele koppeling met grc-platform API: diensten en herstelmaatregelen uit live risicoregister laden
-- [ ] Exportformaat afstemmen op grc-platform rapportage-module
+- [ ] Diensten en herstelmaatregelen als JSON exporteren en weer inlezen, zodat ze in het eigen risicoregister van de organisatie landen (de commons houdt geen register bij, besluit 02-09-2026)
 
 ---
 
