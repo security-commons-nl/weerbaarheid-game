@@ -1,0 +1,35 @@
+name: CI
+
+# De game is één HTML-bestand zonder build, dus er valt weinig te compileren. Wat er wél toe doet is
+# of hij het doet op een beamer in een vergaderzaal: past de uitleg op het scherm, rekken de kaarten
+# niet uit, en heet hij overal hetzelfde. Dat toetst tests/test_scherm.py in een echte browser, op
+# drie schermformaten. Aanleiding: een uitlegkaart die bij stap 1 en 2 buiten beeld viel, en dat is
+# onzichtbaar tot iemand voor een zaal staat.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  scherm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Installeren
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Tests
+        run: python -m pytest tests -v

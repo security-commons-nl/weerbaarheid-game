@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Weerbaarheids-Dashboard</title>
+<title>Weerbaarheidsgame &middot; gespreksinstrument voor college en directie</title>
 <style>
 :root {
   --navy:   #1a2744;
@@ -68,6 +68,9 @@ body {
   position: relative; overflow: hidden;
 }
 .pillar-tile:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,0,0,.18); }
+/* Een grid rekt zijn cellen standaard uit tot de hoogste; bij drie diensten met korte teksten
+   gaf dat drie bijna lege kaarten van 670 pixels. De kaart is zo hoog als zijn inhoud. */
+.svc-grid { align-items: start; }
 .pt-stad     { background: linear-gradient(135deg,#3b5bdb,#4c6ef5); color: white; }
 .pt-vitaal   { background: linear-gradient(135deg,#0ca678,#12b886); color: white; }
 .pt-gemeente { background: linear-gradient(135deg,#d97706,#f59e0b); color: white; }
@@ -948,7 +951,7 @@ body.presentatie .score-row-value { font-size: 15px; }
 <!-- SCREEN 1 — PIJLERS -->
 <div class="screen active" id="s-pillar">
   <div class="hdr">
-    <div><h1>&#9881; Weerbaarheids-Dashboard</h1></div>
+    <div><h1>&#9881; Weerbaarheidsgame</h1></div>
   </div>
   <div class="pillar-grid">
     <div class="pillar-tile pt-stad" onclick="kiesPijler('stad')">
@@ -985,7 +988,7 @@ body.presentatie .score-row-value { font-size: 15px; }
 <!-- SCREEN 4 — TOTAALOVERZICHT -->
 <div class="screen" id="s-totaal">
   <div class="hdr">
-    <div><h1>&#9881; Weerbaarheids-Dashboard</h1></div>
+    <div><h1>&#9881; Weerbaarheidsgame</h1></div>
     <div class="status-pill" id="totaal-pill">OPERATIONEEL</div>
   </div>
   <div class="breadcrumb">
@@ -1014,7 +1017,7 @@ body.presentatie .score-row-value { font-size: 15px; }
 <!-- SCREEN 2 — DIENSTEN -->
 <div class="screen" id="s-dienst">
   <div class="hdr">
-    <div><h1>&#9881; Weerbaarheids-Dashboard</h1></div>
+    <div><h1>&#9881; Weerbaarheidsgame</h1></div>
   </div>
   <div class="breadcrumb">
     <span class="crumb" onclick="toonScherm('s-pillar')">Overzicht</span>
@@ -1033,7 +1036,7 @@ body.presentatie .score-row-value { font-size: 15px; }
 <!-- SCREEN 3 — PREP -->
 <div class="screen" id="s-prep">
   <div class="hdr">
-    <div><h1>&#9881; Weerbaarheids-Dashboard</h1></div>
+    <div><h1>&#9881; Weerbaarheidsgame</h1></div>
     <span class="status-pill" id="prep-pill">VOORBEREIDING</span>
   </div>
   <div class="breadcrumb">
@@ -1068,7 +1071,7 @@ body.presentatie .score-row-value { font-size: 15px; }
 <!-- SCREEN 4 — MACHINE -->
 <div class="screen" id="s-machine">
   <div class="hdr">
-    <div><h1>&#9881; Weerbaarheids-Dashboard</h1></div>
+    <div><h1>&#9881; Weerbaarheidsgame</h1></div>
     <div class="hdr-btns">
       <button class="hdr-btn" id="btn-tutorial" onclick="startTutorial()" title="Uitleg" style="position:relative;">? Uitleg</button>
       <button class="hdr-btn" id="btn-presentatie" onclick="togglePresentatie()" title="Volledig scherm">Volledig scherm</button>
@@ -3941,6 +3944,13 @@ function walkthroughStap(idx) {
     const stageRect = stage.getBoundingClientRect();
     const cardX = nodeRect.left - stageRect.left + nodeRect.width / 2 - 170;
     const cardY = nodeRect.bottom - stageRect.top + 16;
+
+    // De startkaart centreert zichzelf met een transform en zet een eigen breedte; die moeten hier
+    // terug, anders schuift de kaart alsnog een halve breedte naar links en valt stap 1 en 2 buiten
+    // beeld. De clamp hieronder rekent in pixels vanaf de linkerrand en verdraagt geen transform.
+    card.style.transform = 'none';
+    card.style.maxWidth = '';
+    card.style.textAlign = '';
 
     // Clamp horizontally
     const clampedX = Math.max(10, Math.min(stageRect.width - 350, cardX));

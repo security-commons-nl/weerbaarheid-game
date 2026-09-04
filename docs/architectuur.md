@@ -1,4 +1,4 @@
-# Weerbaarheids-dashboard — Architectuur
+# weerbaarheidsgame — Architectuur
 
 > Voor contributors die de tool willen aanpassen of uitbreiden.
 

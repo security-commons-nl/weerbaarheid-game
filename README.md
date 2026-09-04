@@ -42,7 +42,7 @@ Zie [CONTRIBUTING.md](https://github.com/security-commons-nl/.github/blob/main/C
 EUPL-1.2, zie [LICENSE](LICENSE).
 
 ## Wat is het?
-Het weerbaarheids-dashboard is een op zichzelf staande HTML-tool die de keten van kritieke gemeentelijke diensten simuleert als tandwielanimaties. Bestuurders (directie, college van B&W) kunnen:
+Het weerbaarheidsgame is een op zichzelf staande HTML-tool die de keten van kritieke gemeentelijke diensten simuleert als tandwielanimaties. Bestuurders (directie, college van B&W) kunnen:
 
 - Een dienst kiezen (uitkering, drinkwater, paspoort, crisis-alert, etc.)
 - Een incident simuleren en zien welke tandwielen stoppen

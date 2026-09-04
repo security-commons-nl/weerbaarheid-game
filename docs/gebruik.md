@@ -1,4 +1,4 @@
-# Weerbaarheids-dashboard — Gebruik
+# weerbaarheidsgame — Gebruik
 
 > Voor facilitators, CISO's en ISO's die de tool gebruiken in een bestuurlijke presentatie.
 

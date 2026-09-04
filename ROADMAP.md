@@ -6,7 +6,7 @@
 
 ## Huidige staat
 
-Het weerbaarheids-dashboard is functioneel als standalone HTML-presentatiegereedschap.
+Het weerbaarheidsgame is functioneel als standalone HTML-presentatiegereedschap.
 
 **Beschikbaar:**
 - Tandwielanimaties voor kritieke gemeentelijke diensten (uitkering, drinkwater, paspoort, crisis-alert, etc.)

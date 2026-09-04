@@ -1,4 +1,4 @@
-# Plan: Weerbaarheids-dashboard Leiden
+# Plan: weerbaarheidsgame Leiden
 ## Fundament voor de HTML-tool
 *Versie 1.2 — 26 maart 2026 — bypass-keten, preventieve satellieten, responsieve layout, ketenstappen per dienst*
 
