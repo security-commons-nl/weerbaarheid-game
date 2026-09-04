@@ -1,3 +1,56 @@
+﻿# Python
 __pycache__/
+*.py[cod]
+*.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+
+# Misc
+*.bak
+*.backup
+*.log
+
+# AI tooling
+.codesight/
+
+# AI-tooling (lokaal per ontwikkelaar, niet delen)
+.claude/
+.codesight/
+CLAUDE.md
+AGENTS.md
+
+# Browsertests
 .pytest_cache/
-*.pyc
