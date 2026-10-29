@@ -2,6 +2,11 @@
 
 Append-only. Datum, besluit, een zin onderbouwing. Nieuwste bovenaan.
 
+- **2026-10-29 · De game haalt als eerste de lat van het redactiestatuut (C5).** Kruimelpad, versie en status
+  op de pagina, een link naar de tests in CI, en de stand als bestand van de gebruiker (opslaan en laden,
+  getoetst in `tests/test_stand.py`). Reden: hij staat op de bestuurdersroute van de voorpagina en was het
+  instrument met de minste toetsbaarheid (plan *de site is het product*, 29-10-2026). Nog open: een
+  referentie-implementatie van de rekenregels naast de JavaScript.
 - **2026-09-03 · De naam blijft `weerbaarheid-game`, de ondertitel wordt scherper.** "Game" belooft een
   spel terwijl dit een gespreksinstrument is, maar de repo wordt op 23 plekken buiten zijn eigen map
   genoemd en de URL wordt gebruikt in bestuursgesprekken; een dode link bij een bestuurder weegt zwaarder

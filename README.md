@@ -31,6 +31,14 @@ python -m http.server 8080
 
 Het werkt op elke moderne browser. Geoptimaliseerd voor volledig scherm op laptop of beamer.
 
+## De lat
+
+Bovenaan de pagina staan het kruimelpad, de versie (de datum in `VERSIE` in het bestand, bijwerken bij elke
+wijziging), de status, een link naar de tests in CI en twee knoppen: **Stand opslaan** bewaart je keuzes als
+JSON-bestand op je eigen apparaat, **Stand laden** leest zo'n bestand weer in. Er wordt niets opgeslagen
+buiten je browser (redactiestatuut C5: de gebruiker is zijn eigen dossier). `tests/test_stand.py` toetst de
+rondgang opslaan en laden in een echte browser.
+
 ## Bijdragen
 
 Zie de [CONTRIBUTING](https://github.com/security-commons-nl/.github/blob/main/CONTRIBUTING.md) van de organisatie: daar staat per project een formulier, ook zonder Git-ervaring.
