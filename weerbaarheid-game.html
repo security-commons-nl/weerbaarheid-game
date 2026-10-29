@@ -23,6 +23,16 @@ body {
 .screen { display: none; flex: 1; flex-direction: column; overflow: hidden; }
 .screen.active { display: flex; }
 
+
+/* De lat (statuut C4, C5, 29-10-2026): kruimelpad, versie, status, tests, stand opslaan en laden. */
+.lat { font: 12px/1.4 'Segoe UI', system-ui, sans-serif; display: flex; justify-content: space-between; align-items: center;
+  gap: 8px 14px; flex-wrap: wrap; padding: 5px 16px; background: #fff; border-bottom: 1px solid #d7dee7; color: #5a6675; flex-shrink: 0; }
+.lat a { color: #1f4e79; text-decoration: none; }
+.lat a:hover { text-decoration: underline; }
+.lat button { font: inherit; padding: 2px 9px; border: 1px solid #1f4e79; background: #fff; color: #1f4e79; border-radius: 4px; cursor: pointer; }
+.lat button:hover { background: #1f4e79; color: #fff; }
+.lat-melding { color: #22733f; }
+
 /* HEADER */
 .hdr {
   background: var(--navy); color: white;
@@ -947,6 +957,7 @@ body.presentatie .score-row-value { font-size: 15px; }
 </style>
 </head>
 <body>
+<nav class="lat" aria-label="Kruimelpad en versie"><span><a href="https://security-commons-nl.github.io/">Security Commons NL</a> &rsaquo; <span>Weerbaarheidsgame</span></span><span>versie <span id="lat-versie"></span> &middot; status: in gebruik &middot; <a href="https://github.com/security-commons-nl/weerbaarheid-game/actions/workflows/ci.yml">tests in CI</a> &middot; <button type="button" id="btn-stand-opslaan" title="Je keuzes als JSON-bestand bewaren; er wordt niets opgeslagen buiten je eigen apparaat">Stand opslaan</button> <button type="button" id="btn-stand-laden" title="Een eerder opgeslagen stand inlezen">Stand laden</button><input type="file" id="stand-bestand" accept="application/json,.json" hidden><span class="lat-melding" id="lat-melding" aria-live="polite"></span></span></nav>
 
 <!-- SCREEN 1 — PIJLERS -->
 <div class="screen active" id="s-pillar">
@@ -4244,6 +4255,74 @@ function regelStress(stijgt, snel) {
     sub.textContent       = label;
   }, 600);
 }
+
+// ════════════════════════════════════════════════
+// DE LAT (statuut C5): versie en peildatum op de pagina, en de stand als bestand van de gebruiker.
+// Bijwerken bij elke wijziging van de game; de test tests/test_stand.py leest hem uit de pagina.
+// ════════════════════════════════════════════════
+const VERSIE = '2026-10-29';
+const STAND_VELDEN = ['pijler', 'dienst', 'scenario', 'prepScenario', 'metBudget', 'effectiviteit', 'spofId'];
+const STAND_SETS = ['prepKeuzes', 'actief', 'versterktNodes'];
+
+function standExport() {
+  const uit = { instrument: 'weerbaarheid-game', versie: VERSIE, bewaard: new Date().toISOString().slice(0, 10) };
+  for (const v of STAND_VELDEN) uit[v] = st[v];
+  for (const v of STAND_SETS) uit[v] = Array.from(st[v] || []);
+  return uit;
+}
+
+function standImport(data) {
+  if (!data || data.instrument !== 'weerbaarheid-game') throw new Error('Dit is geen stand van de weerbaarheidsgame.');
+  for (const v of STAND_VELDEN) if (v in data) st[v] = data[v];
+  for (const v of STAND_SETS) st[v] = new Set(Array.isArray(data[v]) ? data[v] : []);
+  return data;
+}
+
+function latMelding(tekst) {
+  const el = document.getElementById('lat-melding');
+  if (!el) return;
+  el.textContent = tekst;
+  setTimeout(() => { if (el.textContent === tekst) el.textContent = ''; }, 6000);
+}
+
+function standOpslaan() {
+  const blob = new Blob([JSON.stringify(standExport(), null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'weerbaarheidsgame-stand-' + new Date().toISOString().slice(0, 10) + '.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  latMelding('Stand opgeslagen als bestand.');
+}
+
+function standLaden(bestand) {
+  const lezer = new FileReader();
+  lezer.onload = () => {
+    try {
+      const data = standImport(JSON.parse(String(lezer.result)));
+      const n = (data.prepKeuzes || []).length + (data.actief || []).length;
+      toonScherm('s-pillar');
+      latMelding('Stand geladen (' + (data.bewaard || 'datum onbekend') + ', ' + n + ' keuzes). Kies opnieuw je pijler; je keuzes staan klaar.');
+    } catch (e) {
+      latMelding('Laden mislukt: ' + e.message);
+    }
+  };
+  lezer.readAsText(bestand);
+}
+
+(function latInit() {
+  const v = document.getElementById('lat-versie');
+  if (v) v.textContent = VERSIE;
+  const op = document.getElementById('btn-stand-opslaan');
+  const la = document.getElementById('btn-stand-laden');
+  const inp = document.getElementById('stand-bestand');
+  if (op) op.addEventListener('click', standOpslaan);
+  if (la && inp) {
+    la.addEventListener('click', () => inp.click());
+    inp.addEventListener('change', () => { if (inp.files && inp.files[0]) standLaden(inp.files[0]); inp.value = ''; });
+  }
+})();
 </script>
 </body>
+
 </html>

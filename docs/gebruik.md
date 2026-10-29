@@ -55,6 +55,13 @@ De tool is bedoeld als gespreksopener, niet als eindproduct. Vervolgstappen die 
 
 ---
 
+## Stand bewaren tussen twee sessies
+
+Met **Stand opslaan** (bovenaan de pagina) bewaar je de keuzes van een sessie als JSON-bestand; met **Stand
+laden** zet je ze de volgende keer terug en kies je opnieuw de pijler. Handig als een bestuur in twee
+bijeenkomsten speelt, of als je een voorbereiding thuis wilt klaarzetten. Het bestand blijft op je eigen
+apparaat; de game slaat niets op.
+
 ## Bekende beperkingen
 
 - Geen live data — alles is hardcoded
