@@ -62,6 +62,15 @@ Elke dienst heeft hetzelfde schema:
 
 ---
 
+## Rekenregels en hun referentie
+
+De uitkomst van een scenario volgt uit vier regels: de effectiviteit per maatregel (een complicatie kan die
+overschrijven), het totaal van de ingezette reactieve maatregelen met een plafond van 85 procent, de effecten van
+de voorbereiding (ontgrendelen, versterken, een schakel weerbaarder maken), en de uitkomst: noodprocedure vanaf
+30 procent met minstens een oranje maatregel ingezet, anders gedeeltelijk of systeem plat. In de pagina zitten ze
+in `getEffectiviteit`, `berekenEffectiviteit`, `startVanuitPrep` en `evalueer`. De leesbare referentie is
+`reken.py`; `tests/test_reken.py` legt die naast het echte script via `tests/harnas.mjs`.
+
 ## Tandwielanimaties
 
 Tandwielen zijn SVG-elementen met berekende tanden (`gearPath()`-functie). De rotatie-animatie loopt via CSS `transform: rotate()` updates in een `requestAnimationFrame`-loop.
