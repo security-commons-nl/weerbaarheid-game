@@ -39,6 +39,12 @@ JSON-bestand op je eigen apparaat, **Stand laden** leest zo'n bestand weer in. E
 buiten je browser (redactiestatuut C5: de gebruiker is zijn eigen dossier). `tests/test_stand.py` toetst de
 rondgang opslaan en laden in een echte browser.
 
+De rekenregels (effectiviteit per maatregel, het totaal met een plafond van 85 procent, de effecten van de
+voorbereiding, en de uitkomst met de drempel van 30 procent) staan als referentie in `reken.py`.
+`tests/test_reken.py` draait het echte script uit de pagina buiten de browser (`tests/harnas.mjs`, met node) over
+elk scenario, elke voorbereiding, elke inzet en elke complicatie, ruim 20.000 gevallen, en eist dat de referentie
+overal hetzelfde uitkomt. Verander je een regel, verander hem dan aan beide kanten.
+
 ## Bijdragen
 
 Zie de [CONTRIBUTING](https://github.com/security-commons-nl/.github/blob/main/CONTRIBUTING.md) van de organisatie: daar staat per project een formulier, ook zonder Git-ervaring.
